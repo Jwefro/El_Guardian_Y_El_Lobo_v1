@@ -1,0 +1,24 @@
+{
+  "eslint.workingDirectories": [
+    "apps/dashboard",
+    "apps/rti-dashboard",
+    "apps/rti-landing",
+    "apps/rti-outlet",
+    "apps/rti-registry",
+    "apps/savespace",
+    "packages/core"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "never"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[xml]": {
+    "editor.defaultFormatter": "fabianlauer.vs-code-xml-format"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "postman.settings.dotenv-detection-notification-visibility": false
+}
