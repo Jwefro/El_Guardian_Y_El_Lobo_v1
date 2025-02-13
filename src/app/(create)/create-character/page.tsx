@@ -2,42 +2,41 @@
 import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@/components/ui/button';
+import { zodResolver } from '@hookform/resolvers/zod';;
 import { Typography } from '@/components/ui/typography';
 import NameSection from './components/NameSection';
 import StatsSection from './components/StatsSection';
 import SkillsSection from './components/SkillsSection';
 import Main from '@/components/layout/Main';
-import { useRouter } from 'next/navigation';
+/* import { useRouter } from 'next/navigation'; */
 
 const schema = z.object({
   characterName: z.string().min(1, "El nombre del personaje es obligatorio"),
   wolfName: z.string().min(1, "El nombre del lobo es obligatorio"),
-  agility: z.number().min(0).max(5),
-  intellect: z.number().min(0).max(5),
-  strength: z.number().min(0).max(5),
-  vitality: z.number().min(0).max(5),
+  sexo: z.enum(['hombre', 'mujer']),
+  agilidad: z.number().min(0).max(5),
+  fuerza: z.number().min(0).max(5),
+  vitalidad: z.number().min(0).max(5),
   skill: z.enum(['rastreo', 'sigilo', 'maestro_en_armas', 'comerciante', 'intuicion']),
 }).refine(data => {
-  const totalPoints = data.agility + data.intellect + data.strength + data.vitality;
+  const totalPoints = data.agilidad + data.fuerza + data.vitalidad;
   return totalPoints <= 5;
 }, {
   message: "Los puntos totales no pueden exceder de 5",
-  path: ["agility", "intellect", "strength", "vitality"]
+  path: ["agilidad", "fuerza", "vitalidad"]
 });
 
 const Page = () => {
 
-  const [startAnimation, setStartAnimation] = useState(false);
-  const router = useRouter();
+  const [startAnimation, /* setStartAnimation */] = useState(false);
+/*   const router = useRouter();
 
   const handleStartGame = () => {
     setStartAnimation(true);
     setTimeout(() => {
-      router.push('/create-character'); // Redirige a la página del juego después de la animación
-    }, 500); // Duración de la animación en milisegundos
-  };
+      router.push('/create-character'); 
+    }, 500); 
+  }; */
   const methods = useForm({
     resolver: zodResolver(schema)
   });
@@ -57,19 +56,6 @@ const Page = () => {
             </Typography>
             <NameSection />
             <Typography variant="h4">Atributos del personaje</Typography>
-            <Typography variant="p">
-              Aqui puedes escoger tus atributos de personaje que te ayudaran en el transcurso de la historia. <br /><br />
-              Puedes escoger entre los siguientes atributos para tu personaje:
-              <br />
-              <span className='font-semibold'> - Agilidad: </span>cada 2 puntos aumenta la probabilidad de esquivar un ataque.
-              <br />
-              <span className='font-semibold'>- Intelecto: </span>   cada 2 puntos aumenta el daño de tus habilidades.
-              <br />
-              <span className='font-semibold'>- Fuerza: </span>  cada 2 puntos aumenta el daño de tus ataques básicos.
-              <br />
-              <span className='font-semibold'> - Vitalidad:</span> cada 2 puntos aumenta tu vida máxima.
-              <br />
-            </Typography>
             <StatsSection />
             <SkillsSection />
           </div>
