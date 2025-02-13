@@ -8,7 +8,7 @@ interface MainProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLE
 
 const Main: FC<MainProps> = ({ children, className, ...props }) => {
   return (
-    <main className={cn('flex flex-col items-center pt-12', className)} {...props}>
+    <main className={cn('flex flex-col items-center', className)} {...props}>
       {children}
     </main>
   );

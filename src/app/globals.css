@@ -54,6 +54,29 @@
     background-position: center;
     --foreground: black;
   }
+  
+  .pergamino-theme {
+    background-image: url('/bg_papel_pergamino.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    --foreground: black;
+  }
+  .bg-navbar {
+    background-image: url('/bg_navbar.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    --foreground: black;
+  }
+  .bg-footer {
+    background-image: url('/bg_footer.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    --foreground: black;
+  }
 
   .dark-theme {
     --background: black;
@@ -67,6 +90,20 @@
 
   .bg-background {
     background-color: var(--background);
+  }
+
+}
+.page-animation {
+  animation: pageTurnFromLeft 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  transform-origin: left center; /* Establece el origen de la transformación en la esquina izquierda */
+}
+
+@keyframes pageTurnFromLeft {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-180deg);
   }
 }
 

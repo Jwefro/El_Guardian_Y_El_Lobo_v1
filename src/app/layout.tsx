@@ -12,8 +12,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='default-theme'>
-      <body ><main className="">{children}</main></body>
+    <html lang="en" className="dark">
+      <body >
+        <main className='pergamino-theme h-full'>{children}
+        </main>
+      </body>
     </html>
   )
 }
