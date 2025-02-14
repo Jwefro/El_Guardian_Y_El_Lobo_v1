@@ -10,10 +10,10 @@ const StatsSection = () => {
   const handleInputChange = (field, value) => {
     const intValue = parseInt(value);
     if (intValue >= 0 && intValue <= 5) {
-      if (totalPoints < 5 || intValue < watch(field)) {
+      if (totalPoints <= 5 || intValue < watch(field)) {
         setValue(field, intValue);
       }
-
+      setValue(field, watch(field));
     }
   };
 
@@ -42,6 +42,8 @@ const StatsSection = () => {
                 <Input
                   type="number"
                   className='w-20'
+                   defaultValue={0}
+
                   min={0}
                   max={5}
                   value={field.value}
@@ -62,6 +64,7 @@ const StatsSection = () => {
                 <Input
                   type="number"
                   className='w-20'
+                   defaultValue={0}
                   min={0}
                   max={5}
                   value={field.value}
@@ -82,6 +85,7 @@ const StatsSection = () => {
                 <Input
                   type="number"
                   className='w-20'
+                   defaultValue={0}
                   min={0}
                   max={5}
                   value={field.value}
@@ -93,6 +97,7 @@ const StatsSection = () => {
           {errors.vitalidad && <p>{String(errors.vitalidad.message)}</p>}
         </div>
       </div>
+      {totalPoints > 5 && <p>Los puntos totales no pueden exceder de 5</p>}
     </div>
   );
 };

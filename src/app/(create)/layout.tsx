@@ -1,4 +1,3 @@
-import Navbar from '@/components/navBar';
 import '../globals.css';
 
 import React from 'react';
@@ -15,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className='pergamino-theme h-full'>
-        <Navbar />
+        <nav className='w-full h-12 fixed bg-navbar'></nav>
         <main className='flex flex-col items-center w-full'>
           {children}
         </main>

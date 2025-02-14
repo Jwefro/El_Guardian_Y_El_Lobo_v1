@@ -9,7 +9,7 @@ const SkillsSection = () => {
   const skill = watch('skill');
 
   return (
-    <div className='mb-8 pb-20'>
+    <div className='pb-10'>
       <label>Habilidades</label>
       <Controller
         name="skill"
