@@ -11,10 +11,10 @@ const OpcionesModal: React.FC = () => {
       <SheetTrigger>
         <Menu className="w-6 h-6" />
       </SheetTrigger>
-      <SheetContent className="pergamino-simple-theme min-h-56" side={'top'}>
+      <SheetContent className="pergamino-simple-theme min-h-56 animate-fade-in" side={'top'}>
         <SheetHeader>
           <SheetTitle className='text-start flex items-center gap-2'>
-          <Settings />  Opciones
+            <Settings />  Opciones
           </SheetTitle>
           <SheetDescription className='flex flex-col gap-4 flex-start'>
             <HojaDePersonaje />

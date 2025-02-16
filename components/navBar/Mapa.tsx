@@ -13,7 +13,7 @@ const MapaDelReino = () => {
         <AlertDialogContent className="pergamino-theme w-screen m-0 px-0 pt-12 h-screen">
           <AlertDialogDescription>
             <AlertDialogTitle className='text-2xl text-red-950 pl-4'>Mapa de los tres Reinos</AlertDialogTitle>
-            <InnerImageZoom src="/mapa.png" zoomSrc="/mapa.png" />
+            <InnerImageZoom src="/mapa.jpeg" zoomSrc="/mapa.jpeg" />
             <div className="w-full flex justify-center">
               <Button  variant='link' className='text-md text-red-950 font-semibold' onClick={() => setOpen(false)}>Cerrar</Button>
             </div>
