@@ -13,8 +13,8 @@ import useStore from '../../../store/useStore';
 import { useRouter } from 'next/navigation';
 
 const schema = z.object({
-  nombre: z.string().min(1, "El nombre del personaje es obligatorio"),
-  wolfName: z.string().min(1, "El nombre del lobo es obligatorio"),
+  nombre: z.string().min(3, "El nombre del personaje es obligatorio").max(20, "El nombre del personaje no puede exceder de 20 caracteres"),
+  wolfName: z.string().min(3, "El nombre del lobo es obligatorio").max(20, "El nombre del personaje no puede exceder de 20 caracteres"),
   sexo: z.enum(['hombre', 'mujer']),
   agilidad: z.number().min(0).max(5),
   fuerza: z.number().min(0).max(5),
@@ -39,23 +39,14 @@ const Page = () => {
     }
   });
   const router = useRouter();
+  const { setCharacter } = useStore.getState();
 
   const onSubmit = data => {
-    const { setCharacter } = useStore.getState();
+   
     setCharacter({
       nombre: data.nombre,
       wolfName: data.wolfName,
-      sexo: data.sexo,
-      atributo: {
-        agilidad: data.agilidad,
-        fuerza: data.fuerza,
-        vitalidad: data.vitalidad,
-      },
-      skill: data.skill,
-    });
-    console.log("Personaje", {
-      nombre: data.nombre,
-      wolfName: data.wolfName,
+      currentPage: '/prologo',
       sexo: data.sexo,
       atributo: {
         agilidad: data.agilidad,

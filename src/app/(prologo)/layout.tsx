@@ -5,6 +5,8 @@ import '../../../styles/reactImageZoom.css';
 
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import useStore from '@/src/store/useStore';
+import { useRouter } from 'next/navigation';
 
 export default function RootLayout({
   children,
@@ -12,9 +14,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const [isClient, setIsClient] = useState(false);
+  const { currentPage } = useStore.getState();
+  const router = useRouter();
+
 
   useEffect(() => {
     setIsClient(true);
+    const currentPath = window?.location?.pathname;
+    if (currentPath !== currentPage) {
+      console.log(`El path actual (${currentPath}) es diferente al currentPage (${currentPage})`);
+      router.push(currentPage);
+    }
   }, []);
 
   return (

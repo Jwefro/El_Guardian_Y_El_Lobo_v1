@@ -14,8 +14,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body >
-        <main className='pergamino-theme h-full'>{children}
+        <main className='pergamino-theme mobile-only h-full'>
+          {children}
         </main>
+        <div className="desktop-message">
+        <div className="fixed inset-0 pergamino-simple-theme flex items-center justify-center">
+            <p className="text-center text-red-950 font-normal text-xl">El libro solo está disponible para dispositivos móviles</p>
+          </div>
+        </div>
       </body>
     </html>
   )

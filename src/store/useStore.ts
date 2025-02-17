@@ -11,8 +11,10 @@ interface CharacterState {
     vitalidad: number;
   };
   skill: ('rastreo' | 'sigilo' | 'maestro_en_armas' | 'comerciante' | 'intuicion')[];
+  currentPage: string;
   setNombre: (nombre: string) => void;
   setWolfName: (wolfName: string) => void;
+  setCurrentPage: (page: string) => void;
   setSexo: (sexo: 'hombre' | 'mujer') => void;
   setSkill: (
     skill: ('rastreo' | 'sigilo' | 'maestro_en_armas' | 'comerciante' | 'intuicion')[],
@@ -32,9 +34,11 @@ const useStore = create<CharacterState>()(
         fuerza: 0,
         vitalidad: 0,
       },
+      currentPage: '/',
       skill: [],
       setNombre: (nombre) => set({ nombre }),
       setWolfName: (wolfName) => set({ wolfName }),
+      setCurrentPage: (currentPage) => set({ currentPage }),
       setSexo: (sexo) => set({ sexo }),
       setSkill: (skill) => set({ skill }),
       setAtributo: (atributo) =>

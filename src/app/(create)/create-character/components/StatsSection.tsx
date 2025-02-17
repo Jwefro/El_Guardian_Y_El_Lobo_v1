@@ -42,8 +42,6 @@ const StatsSection = () => {
                 <Input
                   type="number"
                   className='w-20'
-                   defaultValue={0}
-
                   min={0}
                   max={5}
                   value={field.value}
@@ -64,7 +62,6 @@ const StatsSection = () => {
                 <Input
                   type="number"
                   className='w-20'
-                   defaultValue={0}
                   min={0}
                   max={5}
                   value={field.value}
@@ -85,7 +82,6 @@ const StatsSection = () => {
                 <Input
                   type="number"
                   className='w-20'
-                   defaultValue={0}
                   min={0}
                   max={5}
                   value={field.value}
