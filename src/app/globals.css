@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 10 20% 5%; /* red-950 */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .default-theme {
+/*     --background: url('/bg_papel_pergamino.jpg'); */
+    --foreground: black;
+  }
+
+  .portada-theme {
+    background-image: url('/portada_1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    --foreground: black;
+  }
+  
+  .pergamino-theme {
+    background-image: url('/bg_papel_pergamino.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    --foreground: black;
+  }
+  .pergamino-simple-theme {
+    background-image: url('/bg_papel_pergamino_simple.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    --foreground: black;
+  }
+  .bg-navbar {
+    background-image: url('/bg_navbar.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    --foreground: black;
+  }
+  .bg-footer {
+    background-image: url('/bg_footer.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    --foreground: black;
+  }
+
+  .dark-theme {
+    --background: black;
+    --foreground: white;
+  }
+
+  .light-theme {
+    --background: white;
+    --foreground: black;
+  }
+
+  .bg-background {
+    background-color: var(--background);
+  }
+
+}
+.page-animation {
+  animation: pageTurnFromLeft 0.9s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  transform-origin: left center; /* Establece el origen de la transformación en la esquina izquierda */
+}
+
+@keyframes pageTurnFromLeft {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-180deg);
+  }
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Courgette', sans-serif;
+
+  }
+}
+
+/* Ocultar contenido en pantallas más grandes */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+  .desktop-message {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+  }
+}
+
+/* Mostrar contenido en pantallas móviles */
+@media (max-width: 767px) {
+  .mobile-only {
+    display: block;
+  }
+  .desktop-message {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
