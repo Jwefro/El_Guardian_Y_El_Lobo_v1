@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Main from "../../components/layout/Main";
 import { Button } from "@/components/ui/button";
@@ -8,8 +8,25 @@ import useStore from "../store/useStore";
 
 const HomePage: React.FC = () => {
   const [startAnimation, setStartAnimation] = useState(false);
+  const [isInstalled, setIsInstalled] = useState(false);
   const { setCurrentPage, currentPage } = useStore.getState();
   const router = useRouter();
+
+  useEffect(() => {
+    const checkIfInstalled = () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if (window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone) {
+        setIsInstalled(true);
+      }
+    };
+
+    checkIfInstalled();
+    window.addEventListener('appinstalled', checkIfInstalled);
+
+    return () => {
+      window.removeEventListener('appinstalled', checkIfInstalled);
+    };
+  }, []);
 
   const handleStartGame = () => {
     setStartAnimation(true);
@@ -26,6 +43,19 @@ const HomePage: React.FC = () => {
     }, 500); // Duración de la animación en milisegundos
   };
 
+  const handleCreateShortcut = async () => {
+    if ('share' in navigator) {
+      try {
+        await navigator.share({
+          title: 'Mapa del Reino',
+          text: 'Accede al Mapa del Reino desde tu pantalla de inicio',
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.error('Error al crear el acceso directo:', error);
+      }
+    }
+  };
 
   return (
     <div className="pergamino-theme">
@@ -41,6 +71,13 @@ const HomePage: React.FC = () => {
             currentPage !== "/" && (
               <Button onClick={handleLoadGame} className="w-11/12 border-yellow-100 border bg-green-950 bg-opacity-70 mx-auto">
                 Cargar Partida
+              </Button>
+            )
+          }
+          {
+            !isInstalled && (
+              <Button onClick={handleCreateShortcut} className="w-11/12 border-yellow-100 border bg-red-950 bg-opacity-70 mx-auto">
+                Crear Acceso Directo
               </Button>
             )
           }
