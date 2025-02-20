@@ -4,9 +4,9 @@ import '../globals.css';
 import '../../../styles/reactImageZoom.css';
 
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
 import useStore from '@/src/store/useStore';
 import { useRouter } from 'next/navigation';
+
 
 export default function RootLayout({
   children,
@@ -29,10 +29,13 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="dark">
-      <Head>
+      <head>
         <title>El Guardian y la profecia del Lobo</title>
-        <meta name="description" content="Un libro de rol donde el lector es el protagonista de la historia" />
-      </Head>
+        <meta name="description" content={'Un libro de rol donde el lector es el protagonista de la historia'} />
+        <link rel="icon" href="/lobo.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
+      </head>
 
       <body className='pergamino-theme h-full'>
         {isClient && (<>
