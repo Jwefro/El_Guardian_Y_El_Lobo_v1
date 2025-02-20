@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
         <div className="w-full h-2/5 pl-4 flex justify-center items-center">
           <Image src="/title.png" alt="logo" width={300} height={300} />
         </div>
-        <div className="flex h-3/5 flex-col justify-center items-center gap-4 mt-4">
+        <div className="flex h-3/5 flex-col justify-center items-center gap-4">
           <Button onClick={handleStartGame} disabled={currentPage !== "/"} className="w-11/12 border-yellow-100 border bg-green-950 bg-opacity-70 mx-auto">
             Nueva Partida
           </Button>
