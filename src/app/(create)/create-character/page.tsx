@@ -39,10 +39,10 @@ const Page = () => {
     }
   });
   const router = useRouter();
-  const { setCharacter } = useStore.getState();
+  const { setCharacter, setVida, setVidaMaxima } = useStore.getState();
 
   const onSubmit = data => {
-   
+
     setCharacter({
       nombre: data.nombre,
       wolfName: data.wolfName,
@@ -53,8 +53,13 @@ const Page = () => {
         fuerza: data.fuerza,
         vitalidad: data.vitalidad,
       },
+
       skill: data.skill,
     });
+    if (data.vitalidad <= 3 && data.vitalidad > 1) {
+      setVida(30) 
+      setVidaMaxima(30);
+    }
     setStartAnimation(true);
     setTimeout(() => {
       router.push('/prologo'); // Redirige a la página del juego después de la animación

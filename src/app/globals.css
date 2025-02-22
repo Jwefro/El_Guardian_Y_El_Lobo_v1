@@ -53,6 +53,13 @@
     background-position: center;
     --foreground: black;
   }
+  .pergamino-theme-1 {
+    background-image: url('/bg_pergamino1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
   
   .pergamino-theme {
     background-image: url('/bg_papel_pergamino.jpg');

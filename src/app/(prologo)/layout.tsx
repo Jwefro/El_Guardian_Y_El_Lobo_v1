@@ -43,7 +43,7 @@ export default function RootLayout({
             <Navbar />
           </header>
 
-          <main className='flex flex-col items-center w-full'>
+          <main className='flex flex-col items-center w-full fixed'>
             {children}
           </main>
           <footer className='w-full fixed bottom-0 h-12 bg-footer'>
