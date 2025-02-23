@@ -113,7 +113,7 @@ const Page = () => {
   const totalPoints = methods.watch(['agilidad', 'fuerza', 'vitalidad']).reduce((acc, val) => acc + (val || 0), 0);
 
   return (
-    <Main className={`mobile-only py-16 h-full container max-2xl flex flex-col gap-4 items-center ${startAnimation ? 'page-animation' : ''}`}>
+    <Main className={`mobile-only py-16 h-full container max-2xl flex flex-col gap-4 overflow-y-auto items-center ${startAnimation ? 'page-animation' : ''}`}>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="w-full max-w-3xl mx-auto max-h-screen ">
           <div className="w-full">
