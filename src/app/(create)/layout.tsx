@@ -11,21 +11,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-/*   const { currentPage } = useStore.getState();
-  const router = useRouter();
-  */
-/*   useEffect(() => {
-    const currentPath = window?.location?.pathname;
-    if (currentPath !== currentPage) {
-      console.log(`El path actual (${currentPath}) es diferente al currentPage (${currentPage})`);
-      router.push(currentPage);
-    }
-  }, []);
- */
+  /*   const { currentPage } = useStore.getState();
+    const router = useRouter();
+    */
+  /*   useEffect(() => {
+      const currentPath = window?.location?.pathname;
+      if (currentPath !== currentPage) {
+        console.log(`El path actual (${currentPath}) es diferente al currentPage (${currentPage})`);
+        router.push(currentPage);
+      }
+    }, []);
+   */
   return (
     <html lang="en" className="dark">
-      <body className='pergamino-theme h-full'>
-                <nav className='w-full h-12 fixed bg-navbar'></nav>
+      <body className='pergamino-theme fixed inset-0 overflow-hidden h-full'>
+        <nav className='w-full h-12 fixed bg-navbar'></nav>
         <main className='pergamino-theme mobile-only h-full'>{children}
         </main>
         <div className="desktop-message">

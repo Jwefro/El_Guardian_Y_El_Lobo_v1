@@ -36,23 +36,24 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
       </head>
-
-      <body className='pergamino-theme h-full'>
+      <header className='w-full h-12 fixed bg-navbar'>
+        <Navbar />
+      </header>
+      <body className='pergamino-theme fixed inset-0 overflow-hidden h-full'>
         {isClient && (<>
-          <header className='w-full h-12 bg-navbar'>
-            <Navbar />
-          </header>
+
 
           <main className='flex flex-col items-center w-full fixed'>
             {children}
           </main>
-          <footer className='w-full fixed bottom-0 h-12 bg-footer'>
-            <div className="w-full h-12 flex items-center justify-center">
-              <p className="text-center text-red-950 font-normal text-xs">© 2025 El Guardian y la profecia del Lobo</p>
-            </div>
-          </footer>
+
         </>)}
       </body>
+      <footer className='w-full fixed bottom-0 h-12 bg-footer'>
+        <div className="w-full h-12 flex items-center justify-center">
+          <p className="text-center text-red-950 font-normal text-xs">© 2025 El Guardian y la profecia del Lobo</p>
+        </div>
+      </footer>
     </html>
   );
 }

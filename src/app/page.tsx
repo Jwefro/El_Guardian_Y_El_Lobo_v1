@@ -9,7 +9,7 @@ import useStore from "../store/useStore";
 const HomePage: React.FC = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
-  const { setCurrentPage, currentPage } = useStore.getState();
+  const { setCurrentPage, currentPage } = useStore();
   const router = useRouter();
 
   useEffect(() => {
