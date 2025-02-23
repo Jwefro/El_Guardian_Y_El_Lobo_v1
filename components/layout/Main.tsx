@@ -1,6 +1,6 @@
 import React, { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 
-import { cn } from '../../lib/utils';
+import { cn } from '../../lib/utils/utils';
 
 interface MainProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
   children: React.ReactNode;

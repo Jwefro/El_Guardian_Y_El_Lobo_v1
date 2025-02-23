@@ -44,7 +44,7 @@ const StatsSection = () => {
                   className='w-20'
                   min={0}
                   max={5}
-                  value={field.value}
+                  
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
                 />
               )}
@@ -64,7 +64,7 @@ const StatsSection = () => {
                   className='w-20'
                   min={0}
                   max={5}
-                  value={field.value}
+                  
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
                 />
               )}
@@ -84,7 +84,7 @@ const StatsSection = () => {
                   className='w-20'
                   min={0}
                   max={5}
-                  value={field.value}
+                  
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
                 />
               )}

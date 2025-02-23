@@ -1,6 +1,6 @@
 {
     "name": "El Guardian y la profecia del Lobo",
-    "short_name": "GuardianLobo",
+    "short_name": "ElGuardianYElLobo",
     "description": "Un libro de rol donde el lector es el protagonista de la historia",
     "start_url": "/",
     "display": "standalone",

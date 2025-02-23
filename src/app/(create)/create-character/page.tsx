@@ -9,8 +9,9 @@ import StatsSection from './components/StatsSection';
 import SkillsSection from './components/SkillsSection';
 import Main from '@/components/layout/Main';
 import { Button } from '@/components/ui/button';
-import useStore from '../../../store/useStore';
+import useStore, { Inventario } from '../../../store/useStore';
 import { useRouter } from 'next/navigation';
+import { capitalizeFirstLetter } from '@/lib/helpers/mayuscula';
 
 const schema = z.object({
   nombre: z.string().min(3, "El nombre del personaje es obligatorio").max(20, "El nombre del personaje no puede exceder de 20 caracteres"),
@@ -19,7 +20,7 @@ const schema = z.object({
   agilidad: z.number().min(0).max(5),
   fuerza: z.number().min(0).max(5),
   vitalidad: z.number().min(0).max(5),
-  skill: z.enum(['rastreo', 'sigilo', 'maestro_en_armas', 'comerciante', 'intuicion']),
+  skill: z.enum(['rastreo', 'sigilo', 'maestro en armas', 'comerciante', 'intuicion']),
 }).refine(data => {
   const totalPoints = data.agilidad + data.fuerza + data.vitalidad;
   return totalPoints <= 5;
@@ -27,6 +28,49 @@ const schema = z.object({
   message: "Los puntos totales no pueden exceder de 5",
   path: ["agilidad", "fuerza", "vitalidad"]
 });
+
+const inventario: Inventario[] = [
+
+  {
+    name: "Pocion",
+    type: 'pocion',
+    svg: "FlaskRound",
+    value: 2,
+  },
+  {
+    name: "Hacha",
+    type: 'arma',
+    svg: "Axe",
+    value: 1,
+  },
+  {
+    name: "Comida",
+    type: 'comida',
+    svg: "Ham",
+    value: 1,
+  },
+
+  {
+    name: "Pocion",
+    type: 'pocion',
+    svg: "FlaskRound",
+    value: 2,
+  },
+  {
+    name: "Hacha",
+    type: 'arma',
+    svg: "Axe",
+    value: 1,
+  },
+  {
+    name: "Espada Doble",
+    type: 'arma',
+    svg: "Swords",
+    value: 2,
+  },
+
+]
+
 
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
@@ -39,10 +83,10 @@ const Page = () => {
     }
   });
   const router = useRouter();
-  const { setCharacter } = useStore.getState();
+  const { setCharacter, setVida, setVidaMaxima } = useStore.getState();
 
   const onSubmit = data => {
-   
+
     setCharacter({
       nombre: data.nombre,
       wolfName: data.wolfName,
@@ -50,11 +94,16 @@ const Page = () => {
       sexo: data.sexo,
       atributo: {
         agilidad: data.agilidad,
-        fuerza: data.fuerza,
+        fuerza:  data.skill === "maestro en armas" ? data.fuerza + 2 : data.fuerza,
         vitalidad: data.vitalidad,
       },
-      skill: data.skill,
+      inventario: inventario,
+      skill: [capitalizeFirstLetter(data.skill) as 'Rastreo' | 'Sigilo' | 'Maestro en armas' | 'Comerciante' | 'Intuicion'],
     });
+    if (data.vitalidad <= 3 && data.vitalidad > 1) {
+      setVida(30)
+      setVidaMaxima(30);
+    }
     setStartAnimation(true);
     setTimeout(() => {
       router.push('/prologo'); // Redirige a la página del juego después de la animación
