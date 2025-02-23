@@ -20,8 +20,8 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
       </head>
-      <body >
-        <main className='pergamino-theme mobile-only h-full'>
+      <body className='fixed inset-0 overflow-hidden'>
+        <main className='pergamino-theme fixed mobile-only h-full'>
           {children}
         </main>
         <div className="desktop-message">
