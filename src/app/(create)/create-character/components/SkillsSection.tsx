@@ -32,10 +32,10 @@ const SkillsSection = () => {
             </div>
             <div className="">
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="maestro_en_armas" id="maestro_en_armas" />
-                <Label htmlFor="maestro_en_armas">Maestro en Armas:</Label>
+                <RadioGroupItem value="maestro en armas" id="maestro en armas" />
+                <Label htmlFor="Maestro en armas">Maestro en Armas:</Label>
               </div>
-              {skill === 'maestro_en_armas' ? <Typography variant="small">Aumenta la efectividad en el combate con armas.</Typography> : null}
+              {skill === 'maestro en armas' ? <Typography variant="small">Aumenta la efectividad en el combate con armas.</Typography> : null}
             </div>
             <div className="">
               <div className="flex items-center space-x-2">
