@@ -19,22 +19,23 @@ const StatsSection = () => {
 
   return (
     <div className='mb-8'>
-      <Typography variant="p">
+      <Typography variant="h4"  className='text-red-950'>Atributos del personaje</Typography>
+      <Typography variant="small">
         Aqui puedes escoger tus atributos de personaje que te ayudaran en el transcurso de la historia.
         <br />
         <br />
-        <span className='font-semibold'> - Agilidad: </span>cada 2 puntos aumenta la probabilidad de esquivar un ataque.
+        <span className='font-semibold text-red-950'> - Agilidad: </span>cada 2 puntos aumenta la probabilidad de esquivar un ataque.
         <br />
-        <span className='font-semibold'>- Fuerza: </span>  cada 2 puntos aumenta el daño de tus ataques básicos.
+        <span className='font-semibold text-red-950'>- Fuerza: </span>  cada 2 puntos aumenta el daño de tus ataques básicos.
         <br />
-        <span className='font-semibold'> - Vitalidad:</span> cada 2 puntos aumenta tu vida máxima.
+        <span className='font-semibold text-red-950'> - Vitalidad:</span> cada 2 puntos aumenta tu vida máxima.
         <br />
       </Typography>
-      <p className='py-4'>Puntos disponibles: {5 - totalPoints}</p>
+      <Typography className='py-4 '>Puntos disponibles: {5 - totalPoints}</Typography>
       <div className="w-30 gap-1 flex flex-col">
         <div>
           <div className="flex gap-4 items-center justify-between">
-            <span>Agilidad:</span>
+            <span  className='text-red-950 font-semibold text-sm'>Agilidad:</span>
             <Controller
               name="agilidad"
               control={control}
@@ -54,7 +55,7 @@ const StatsSection = () => {
         </div>
         <div>
           <div className="flex gap-4 items-center justify-between">
-            <span>Fuerza:</span>
+            <span  className='text-red-950 font-semibold text-sm'>Fuerza:</span>
             <Controller
               name="fuerza"
               control={control}
@@ -64,7 +65,6 @@ const StatsSection = () => {
                   className='w-20'
                   min={0}
                   max={5}
-                  
                   onChange={(e) => handleInputChange(field.name, e.target.value)}
                 />
               )}
@@ -74,7 +74,7 @@ const StatsSection = () => {
         </div>
         <div>
           <div className="flex gap-4 items-center justify-between">
-            <span>Vitalidad:</span>
+            <span  className='text-red-950 font-semibold text-sm'>Vitalidad:</span>
             <Controller
               name="vitalidad"
               control={control}

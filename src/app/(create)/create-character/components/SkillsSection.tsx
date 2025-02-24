@@ -10,13 +10,16 @@ const SkillsSection = () => {
 
   return (
     <div className='pb-10'>
-      <label>Habilidades</label>
+      <Typography variant='h4'  className='text-red-950'>Habilidades</Typography>
+      <Typography variant="small" className='pb-4'>
+        En el vasto y peligroso mundo de nuestra historia, cada personaje tiene la oportunidad de desarrollar habilidades únicas que les permitirán sobrevivir, prosperar y enfrentar los desafíos que se presenten en su camino. A continuación, se describen las habilidades disponibles y cómo pueden influir en la historia y el desarrollo del personaje:
+      </Typography>
       <Controller
         name="skill"
         control={control}
         render={({ field }) => (
           <RadioGroup value={field.value} onValueChange={field.onChange}>
-            <div className="">
+            <div className="pt-4">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="rastreo" id="rastreo" />
                 <Label htmlFor="rastreo">Rastreo:</Label>

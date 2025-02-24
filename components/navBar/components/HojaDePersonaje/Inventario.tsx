@@ -22,7 +22,7 @@ const HojaDeInventario = () => {
                 </div>
                 <div className="flex flex-col items-center">
                     <Typography className='font-semibold text-red-950'>Equipado</Typography>
-                    <div className="flex flex-col items-center my-2 w-20 px-1">
+                    <div className="flex flex-col items-center justify-center my-2 w-20 px-1">
                         {renderIcon(armaEquipada?.svg)}
                         <Typography variant='small' className=" text-xs  font-semibold">{armaEquipada?.name}</Typography>
                         <Typography variant='small' className=" text-xs ">{armaEquipada !== null ? `+${armaEquipada?.value}` : null}</Typography>
