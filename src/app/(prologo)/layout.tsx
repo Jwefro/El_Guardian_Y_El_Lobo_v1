@@ -3,7 +3,7 @@ import Navbar from '@/components/navBar';
 import '../globals.css';
 import '../../../styles/reactImageZoom.css';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import useStore from '@/src/store/useStore';
 import { useRouter } from 'next/navigation';
 
@@ -13,13 +13,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [isClient, setIsClient] = useState(false);
   const { currentPage } = useStore.getState();
   const router = useRouter();
 
 
   useEffect(() => {
-    setIsClient(true);
     const currentPath = window?.location?.pathname;
     if (currentPath !== currentPage) {
       console.log(`El path actual (${currentPath}) es diferente al currentPage (${currentPage})`);
@@ -40,20 +38,20 @@ export default function RootLayout({
         <Navbar />
       </header>
       <body className='pergamino-theme fixed inset-0 overflow-hidden h-full'>
-        {isClient && (<>
-
-
-          <main className='flex flex-col items-center w-full fixed'>
-            {children}
-          </main>
-
-        </>)}
-      </body>
-      <footer className='w-full fixed bottom-0 h-12 bg-footer'>
-        <div className="w-full h-12 flex items-center justify-center">
-          <p className="text-center text-red-950 font-normal text-xs">© 2025 El Guardian y la profecia del Lobo</p>
+        <nav className='w-full h-12 fixed bg-navbar'></nav>
+        <main className='pergamino-theme mobile-only h-full'>{children}
+        </main>
+        <div className="desktop-message">
+          <div className="fixed inset-0 pergamino-simple-theme flex items-center justify-center">
+            <p className="text-center text-red-950 font-normal text-xl">El libro solo está disponible para dispositivos móviles</p>
+          </div>
         </div>
-      </footer>
+        <footer className='w-full fixed bottom-0 h-12 bg-footer'>
+          <div className=" w-full h-12 flex items-center justify-center">
+            <p className="text-center text-red-950 font-normal text-xs">© 2025 El Guardian y la profecia del Lobo</p>
+          </div>
+        </footer>
+      </body>
     </html>
   );
 }
