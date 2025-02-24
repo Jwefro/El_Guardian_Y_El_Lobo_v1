@@ -3,7 +3,7 @@ import Navbar from '@/components/navBar';
 import '../globals.css';
 import '../../../styles/reactImageZoom.css';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useStore from '@/src/store/useStore';
 import { useRouter } from 'next/navigation';
 
@@ -15,10 +15,15 @@ export default function RootLayout({
 }) {
   const { currentPage } = useStore.getState();
   const router = useRouter();
-  const currentPath = window?.location?.pathname;
+  const [currentPath, setCurrentPath] = useState<string | null>(null);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setCurrentPath(window.location.pathname);
+    }
+  }, []);
 
   useEffect(() => {
-    if (currentPath !== currentPage) {
+    if (currentPath && currentPath !== currentPage) {
       console.log(`El path actual (${currentPath}) es diferente al currentPage (${currentPage})`);
       router.push(currentPage);
     }
@@ -27,10 +32,14 @@ export default function RootLayout({
       router.push(currentPage);
     };
 
-    window.addEventListener('popstate', handlePopState);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('popstate', handlePopState);
+    }
 
     return () => {
-      window.removeEventListener('popstate', handlePopState);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('popstate', handlePopState);
+      }
     };
   }, [currentPath, currentPage, router]);
 
