@@ -25,9 +25,9 @@ const Page = () => {
 
   const handlePage = () => {
     setStartAnimation(true);
-    setCurrentPage('/prologo/2');
+    setCurrentPage('/prologo/4');
     setTimeout(() => {
-      router.push('/prologo/2'); // Redirige a la página del juego después de la animación
+      router.push('/prologo/4'); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
 
@@ -51,43 +51,19 @@ const Page = () => {
           >
             <div className="">
               <Typography variant="p" className="">
-                En el borde de esta apacible aldea, rodeada por un denso bosque
-                y un río cristalino, había una modesta cabaña. Aquí es donde
-                vives, un joven aldeano. Aunque pocos conocían tu verdadero
-                nombre, todos en la aldea te reconocían por tu leal mascota,{' '}
-                <span className="text-red-950">{wolfName}</span>, un lobo de
-                imponente figura y aura mística.{' '}
-                <span className="text-red-950">{wolfName}</span> no era un lobo
-                común. Sus ojos, de un profundo azul celeste, reflejaban una
-                inteligencia y nobleza que sobrepasaba la de cualquier animal.
+                Sin perder tiempo, tú y{' '}
+                <span className="text-red-950">{wolfName}</span> se lanzaron a
+                la búsqueda de Lia. Las montañas, aunque bellas, eran
+                traicioneras, con senderos estrechos y rocas resbaladizas. A
+                medida que ascendías, el aire se volvía más frío y el terreno
+                más difícil de navegar. Sin embargo, estabas determinado a
+                encontrar a la niña y no permitirías que ningún obstáculo te
+                detuviera.
               </Typography>
             </div>
           </motion.div>
           <motion.div
             key={1}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={variantsTwo}
-            custom={1}
-            transition={{ duration: 2 }}
-            className="w-full h-2/4 flex flex-col justify-end items-center"
-          >
-            <div className="pt-4">
-              <Typography variant="p" className="">
-                A pesar de su presencia imponente, tú no habías hecho nada
-                notable para ganarte el título de héroe. Eras una persona común
-                que ayudaba en las tareas diarias de la aldea y vivías una vida
-                sencilla y pacífica junto a{' '}
-                <span className="text-red-950">{wolfName}</span>. Sin embargo,
-                tu vínculo con el lobo era evidente para todos, y su compañía
-                proporcionaba una sensación de seguridad y consuelo a los
-                aldeanos.
-              </Typography>
-            </div>
-          </motion.div>
-          <motion.div
-            key={2}
             initial="hidden"
             animate="visible"
             exit="exit"

@@ -15,15 +15,24 @@ export default function RootLayout({
 }) {
   const { currentPage } = useStore.getState();
   const router = useRouter();
-
+  const currentPath = window?.location?.pathname;
 
   useEffect(() => {
-    const currentPath = window?.location?.pathname;
     if (currentPath !== currentPage) {
       console.log(`El path actual (${currentPath}) es diferente al currentPage (${currentPage})`);
       router.push(currentPage);
     }
-  }, []);
+
+    const handlePopState = () => {
+      router.push(currentPage);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [currentPath, currentPage, router]);
 
   return (
     <html lang="en" className="dark">

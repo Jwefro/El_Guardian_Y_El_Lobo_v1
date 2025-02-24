@@ -18,7 +18,7 @@
     "editor.defaultFormatter": "fabianlauer.vs-code-xml-format"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "postman.settings.dotenv-detection-notification-visibility": false
 }
