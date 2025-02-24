@@ -7,8 +7,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 
-export const renderIcon = (iconName: string) => {
+export const renderIcon = (iconName: string, className?: string) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const IconComponent = (LucideIcons as any)[iconName];
-  return IconComponent ? React.createElement(IconComponent) : null;
+  return IconComponent ? React.createElement(IconComponent, { className }) : null;
 };

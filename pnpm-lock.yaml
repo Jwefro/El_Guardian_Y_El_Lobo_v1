@@ -83,6 +83,9 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.3.1
+      react-dice-roll:
+        specifier: ^1.2.2
+        version: 1.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
@@ -3042,6 +3045,12 @@ packages:
 
   randombytes@2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
+
+  react-dice-roll@1.2.2:
+    resolution: {integrity: sha512-QNG+RVs3CymhTkNLwfDdJ93kL4vWO+luHkQAhuNxnus9jOFUZY54AJhlDa4y576S20oEuW47nO7HvEDCtST9wQ==}
+    peerDependencies:
+      react: ^16.13.1
+      react-dom: ^16.13.1
 
   react-dom@18.3.1:
     resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
@@ -6982,6 +6991,11 @@ snapshots:
   randombytes@2.1.0:
     dependencies:
       safe-buffer: 5.2.1
+
+  react-dice-roll@1.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   react-dom@18.3.1(react@18.3.1):
     dependencies:

@@ -6,10 +6,11 @@ import { Typography } from '@/components/ui/typography';
 import useStore from '@/src/store/useStore';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import Item from '@/components/Item';
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const router = useRouter();
-  const { wolfName, setCurrentPage } = useStore();
+  const {setCurrentPage, addInventario } = useStore();
 
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
@@ -25,11 +26,22 @@ const Page = () => {
 
   const handlePage = () => {
     setStartAnimation(true);
-    setCurrentPage('/prologo/2');
+    setCurrentPage('/prologo/5/camino-de-rocas/3');
     setTimeout(() => {
-      router.push('/prologo/2'); // Redirige a la página del juego después de la animación
+      router.push('/prologo/5/camino-de-rocas/3'); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
+
+  const handleAddDaga = () => {
+    addInventario({
+      name: 'Daga',
+      type: 'arma',
+      svg: 'Pipette',
+      value: 2,
+    });
+    handlePage();
+  };
+
 
   return (
     <Main
@@ -49,17 +61,16 @@ const Page = () => {
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
+            {' '}
             <div className="">
-              <Typography variant="p" className="">
-                En el borde de esta apacible aldea, rodeada por un denso bosque
-                y un río cristalino, había una modesta cabaña. Aquí es donde
-                vives, un joven aldeano. Aunque pocos conocían tu verdadero
-                nombre, todos en la aldea te reconocían por tu leal mascota,{' '}
-                <span className="text-red-950">{wolfName}</span>, un lobo de
-                imponente figura y aura mística.{' '}
-                <span className="text-red-950">{wolfName}</span> no era un lobo
-                común. Sus ojos, de un profundo azul celeste, reflejaban una
-                inteligencia y nobleza que sobrepasaba la de cualquier animal.
+              <Typography variant="p" className="pb-4">
+                Justo al final de la escalada, ves una cabaña destruida, con las
+                paredes derrumbadas y el techo colapsado. Parece haber sido
+                abandonada hace mucho tiempo. Al acercarte con cautela, algo
+                reluce entre los escombros. Te agachas y descubres una pequeña
+                daga, con un mango de cuero y una hoja que aún brilla bajo la
+                luz menguante. Decides llevarte la daga, ya que podría serte de
+                ayuda más adelante.
               </Typography>
             </div>
           </motion.div>
@@ -73,37 +84,42 @@ const Page = () => {
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
-            <div className="pt-4">
-              <Typography variant="p" className="">
-                A pesar de su presencia imponente, tú no habías hecho nada
-                notable para ganarte el título de héroe. Eras una persona común
-                que ayudaba en las tareas diarias de la aldea y vivías una vida
-                sencilla y pacífica junto a{' '}
-                <span className="text-red-950">{wolfName}</span>. Sin embargo,
-                tu vínculo con el lobo era evidente para todos, y su compañía
-                proporcionaba una sensación de seguridad y consuelo a los
-                aldeanos.
-              </Typography>
+            <div className="pt-6">
+              <Item
+                inventario={{
+                  name: 'Daga',
+                  type: 'arma',
+                  svg: 'Pipette',
+                  value: 2,
+                }}
+              />
             </div>
           </motion.div>
           <motion.div
-            key={2}
+            key={1}
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={variantsTwo}
-            custom={2}
+            custom={1}
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
-            <div className="pt-6">
+            <div className="py-6 w-full">
               <Button
                 onClick={handlePage}
                 className="w-full bg-red-950 text-white"
               >
-                Continuar
+              Solo  continuar
               </Button>
-            </div>
+              </div>
+              <Button
+                onClick={handleAddDaga}
+                className="w-full bg-red-950 text-white"
+              >
+                Agregarla al inventario y continuar
+              </Button>
+            
           </motion.div>
         </div>
       </AnimatePresence>

@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const router = useRouter();
-  const { wolfName, setCurrentPage } = useStore();
+  const { setCurrentPage, skill } = useStore();
 
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
@@ -23,11 +23,11 @@ const Page = () => {
     }),
   };
 
-  const handlePage = () => {
+  const handlePage = (ruta: string) => {
     setStartAnimation(true);
-    setCurrentPage('/prologo/2');
+    setCurrentPage(`/prologo/5/${ruta}`);
     setTimeout(() => {
-      router.push('/prologo/2'); // Redirige a la página del juego después de la animación
+      router.push(`/prologo/5/${ruta}`); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
 
@@ -50,16 +50,12 @@ const Page = () => {
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
             <div className="">
-              <Typography variant="p" className="">
-                En el borde de esta apacible aldea, rodeada por un denso bosque
-                y un río cristalino, había una modesta cabaña. Aquí es donde
-                vives, un joven aldeano. Aunque pocos conocían tu verdadero
-                nombre, todos en la aldea te reconocían por tu leal mascota,{' '}
-                <span className="text-red-950">{wolfName}</span>, un lobo de
-                imponente figura y aura mística.{' '}
-                <span className="text-red-950">{wolfName}</span> no era un lobo
-                común. Sus ojos, de un profundo azul celeste, reflejaban una
-                inteligencia y nobleza que sobrepasaba la de cualquier animal.
+              <Typography variant="p" className="pb-4">
+                Un camino a tu izquierda está obstruido por grandes rocas. Las
+                piedras son irregulares y resbaladizas, probablemente resultado
+                de un desprendimiento reciente. Para continuar por este sendero,
+                tendrás que trepar y escalar con cuidado para no perder el
+                equilibrio y caer.
               </Typography>
             </div>
           </motion.div>
@@ -73,19 +69,16 @@ const Page = () => {
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
-            <div className="pt-4">
-              <Typography variant="p" className="">
-                A pesar de su presencia imponente, tú no habías hecho nada
-                notable para ganarte el título de héroe. Eras una persona común
-                que ayudaba en las tareas diarias de la aldea y vivías una vida
-                sencilla y pacífica junto a{' '}
-                <span className="text-red-950">{wolfName}</span>. Sin embargo,
-                tu vínculo con el lobo era evidente para todos, y su compañía
-                proporcionaba una sensación de seguridad y consuelo a los
-                aldeanos.
+            <div className="">
+              <Typography variant="p" className="pb-4">
+                El otro camino a tu derecha está lleno de barro espeso,
+                resultado de una tormenta reciente que azotó la región. El agua
+                acumulada forma pequeños charcos que reflejan la luz de la luna,
+                añadiendo un toque fantasmal al paisaje.
               </Typography>
             </div>
           </motion.div>
+
           <motion.div
             key={2}
             initial="hidden"
@@ -94,14 +87,41 @@ const Page = () => {
             variants={variantsTwo}
             custom={2}
             transition={{ duration: 2 }}
-            className="w-full h-2/4 flex flex-col justify-end items-center"
+            className="w-full  flex flex-col justify-end items-center mb-8 pb-20"
           >
-            <div className="pt-6">
+            <div className="pt-2 w-full">
               <Button
-                onClick={handlePage}
+                onClick={() => handlePage('rastreo')}
+                disabled={!skill.includes('Rastreo')}
                 className="w-full bg-red-950 text-white"
               >
-                Continuar
+                Habilidad de Rastreo
+              </Button>
+            </div>
+
+            <div className="pt-2 w-full">
+              <Button
+                onClick={() => handlePage('intuicion')}
+                disabled={!skill.includes('Intuicion')}
+                className="w-full bg-red-950 text-white"
+              >
+                Habilidad de Intuición
+              </Button>
+            </div>
+            <div className="pt-2 w-full">
+              <Button
+                onClick={() => handlePage('intuicion')}
+                className="w-full bg-red-950 text-white"
+              >
+                Camino de Barro
+              </Button>
+            </div>
+            <div className="pt-2 w-full">
+              <Button
+                onClick={() => handlePage('camino-de-rocas')}
+                className="w-full bg-red-950 text-white"
+              >
+                Camino de Piedras
               </Button>
             </div>
           </motion.div>
