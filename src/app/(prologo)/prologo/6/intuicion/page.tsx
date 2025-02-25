@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const router = useRouter();
-  const { setCurrentPage } = useStore();
+  const { setCurrentPage, wolfName } = useStore();
 
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
@@ -25,9 +25,9 @@ const Page = () => {
 
   const handlePage = () => {
     setStartAnimation(true);
-    setCurrentPage('/prologo/3');
+    setCurrentPage('/prologo/5');
     setTimeout(() => {
-      router.push('/prologo/3'); // Redirige a la página del juego después de la animación
+      router.push('/prologo/5'); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
 
@@ -50,19 +50,15 @@ const Page = () => {
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
             <div className="">
-              <Typography variant="p" className="">
-                Una tarde, mientras el sol se desvanecía en el horizonte,
-                cubriendo la aldea con una suave luz dorada, una noticia
-                inquietante llegó a tus oídos. Una niña llamada Lia había
-                desaparecido en las montañas cercanas mientras recogía flores.
-                <br />
-                Ella era la hija de tu mejor amigo de la infancia Aldric , quien
-                había fallecido en un accidente trágico años atrás en el reino
-                de Valoria. Desde entonces, te habías convertido en una especie
-                de mentor y protector para Lia. Su madre, llamada Maris ,
-                sobrecargada por la pérdida, apreciaba profundamente el vínculo
-                que habías formado con su hija. Ahora, Lia estaba en peligro y
-                necesitaba tu ayuda.
+              <Typography variant="p" className="pb-4">
+                decides confiar en el instinto de{' '}
+                <span className="text-red-950 px-1">{wolfName}</span>. Te
+                diriges hacia el camino embarrado, siguiendo a tu compañero
+                fiel. A medida que avanzan, el paisaje cambia lentamente. El
+                denso bosque se vuelve más oscuro y las sombras de los árboles
+                se alargan, creando una atmósfera de misterio y tensión. De
+                repente, algo en el aire te hace detenerte. encuentras el cesto
+                de flores de Lia. Y confirmas que estás en el camino correcto.
               </Typography>
             </div>
           </motion.div>
@@ -72,7 +68,7 @@ const Page = () => {
             animate="visible"
             exit="exit"
             variants={variantsTwo}
-            custom={2}
+            custom={1}
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >

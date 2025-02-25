@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const router = useRouter();
-  const { setCurrentPage } = useStore();
+  const { setCurrentPage, wolfName } = useStore();
 
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
@@ -25,9 +25,9 @@ const Page = () => {
 
   const handlePage = () => {
     setStartAnimation(true);
-    setCurrentPage('/prologo/3');
+    setCurrentPage('/prologo/5');
     setTimeout(() => {
-      router.push('/prologo/3'); // Redirige a la página del juego después de la animación
+      router.push('/prologo/5'); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
 
@@ -50,19 +50,14 @@ const Page = () => {
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
             <div className="">
-              <Typography variant="p" className="">
-                Una tarde, mientras el sol se desvanecía en el horizonte,
-                cubriendo la aldea con una suave luz dorada, una noticia
-                inquietante llegó a tus oídos. Una niña llamada Lia había
-                desaparecido en las montañas cercanas mientras recogía flores.
-                <br />
-                Ella era la hija de tu mejor amigo de la infancia Aldric , quien
-                había fallecido en un accidente trágico años atrás en el reino
-                de Valoria. Desde entonces, te habías convertido en una especie
-                de mentor y protector para Lia. Su madre, llamada Maris ,
-                sobrecargada por la pérdida, apreciaba profundamente el vínculo
-                que habías formado con su hija. Ahora, Lia estaba en peligro y
-                necesitaba tu ayuda.
+              <Typography variant="p" className="pb-4">
+                Te Debes idear un plan para enfrentarlos y rescatar a Lia.
+                Podrías intentar desarmar a los bandidos sigilosamente, crear
+                una distracción utilizando los objetos cercanos, o coordinar un
+                ataque sorpresa con la ayuda de{' '}
+                <span className="text-red-950 px-1">{wolfName}</span>. Tu mente
+                trabaja rápidamente, evaluando las opciones y preparando el
+                terreno para la acción.
               </Typography>
             </div>
           </motion.div>
@@ -72,7 +67,7 @@ const Page = () => {
             animate="visible"
             exit="exit"
             variants={variantsTwo}
-            custom={2}
+            custom={1}
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
@@ -81,7 +76,31 @@ const Page = () => {
                 onClick={handlePage}
                 className="w-full bg-red-950 text-white"
               >
-                Continuar
+               Crear una Distracción
+              </Button>
+            </div>
+            <div className="pt-6">
+              <Button
+                onClick={handlePage}
+                className="w-full bg-red-950 text-white"
+              >
+                Desarmar a los Bandidos
+              </Button>
+            </div>
+            <div className="pt-6">
+              <Button
+                onClick={handlePage}
+                className="w-full bg-red-950 text-white"
+              >
+                Ataque Sorpresa
+              </Button>
+            </div>
+            <div className="pt-6">
+              <Button
+                onClick={handlePage}
+                className="w-full bg-red-950 text-white"
+              >
+                Esperar y Observar
               </Button>
             </div>
           </motion.div>

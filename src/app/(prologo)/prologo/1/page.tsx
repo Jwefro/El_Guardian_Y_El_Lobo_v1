@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const router = useRouter();
-  const { wolfName, setCurrentPage } = useStore();
+  const { wolfName, setCurrentPage, sexo } = useStore();
 
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
@@ -53,8 +53,10 @@ const Page = () => {
               <Typography variant="p" className="">
                 En el borde de esta apacible aldea, rodeada por un denso bosque
                 y un río cristalino, había una modesta cabaña. Aquí es donde
-                vives, un joven aldeano. Aunque pocos conocían tu verdadero
-                nombre, todos en la aldea te reconocían por tu leal mascota,{' '}
+                vives,{' '}
+                {sexo == 'hombre' ? 'un joven aldeano' : 'una joven aldeana'}.
+                Aunque pocos conocían tu verdadero nombre, todos en la aldea te
+                reconocían por tu leal mascota,{' '}
                 <span className="text-red-950">{wolfName}</span>, un lobo de
                 imponente figura y aura mística.{' '}
                 <span className="text-red-950">{wolfName}</span> no era un lobo
@@ -75,8 +77,7 @@ const Page = () => {
           >
             <div className="pt-4">
               <Typography variant="p" className="">
-                A pesar de su presencia imponente, tú no habías hecho nada
-                notable para ganarte el título de héroe. Eras una persona común
+                A pesar de su presencia imponente, tú eras una persona común
                 que ayudaba en las tareas diarias de la aldea y vivías una vida
                 sencilla y pacífica junto a{' '}
                 <span className="text-red-950">{wolfName}</span>. Sin embargo,
