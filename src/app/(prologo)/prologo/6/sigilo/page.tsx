@@ -91,7 +91,7 @@ const Page = () => {
                   mientras los otros dos ríen y beben de una botella de licor.
                   Desde tu posición oculta, también vislumbras una pequeña
                   figura atada a un árbol cercano: es Lia. Su rostro muestra
-                  señales de miedo y cansancio, y su respiración es r1ápida y
+                  señales de miedo y cansancio, y su respiración es rápida y
                   superficial. Afortunadamente, parece ilesa.
                 </Typography>
               </div>
@@ -114,7 +114,7 @@ const Page = () => {
                   erguidas, atento a cualquier movimiento. Sabes que cualquier
                   ruido podría delatar vuestra posición y poner en peligro a
                   Lia. Miras alrededor y notas que hay varios objetos dispersos
-                  cerca de los bandidos: una cuerda, un saco de provisiones y
+                  cerca de los bandidos: una roca, un saco de provisiones y
                   una manta. Podrían ser útiles para un plan de rescate.
                 </Typography>
               </div>

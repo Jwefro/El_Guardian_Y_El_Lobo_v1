@@ -25,9 +25,9 @@ const Page = () => {
 
   const handlePage = () => {
     setStartAnimation(true);
-    setCurrentPage('/prologo/5');
+    setCurrentPage('/prologo/6');
     setTimeout(() => {
-      router.push('/prologo/5'); // Redirige a la página del juego después de la animación
+      router.push('/prologo/6'); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
 
