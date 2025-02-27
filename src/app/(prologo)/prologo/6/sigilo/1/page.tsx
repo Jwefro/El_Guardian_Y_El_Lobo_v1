@@ -23,11 +23,11 @@ const Page = () => {
     }),
   };
 
-  const handlePage = () => {
+  const handlePage = (ruta:string) => {
     setStartAnimation(true);
-    setCurrentPage('/prologo/5');
+    setCurrentPage(`/prologo/6/sigilo/1/${ruta}`);
     setTimeout(() => {
-      router.push('/prologo/5'); // Redirige a la página del juego después de la animación
+      router.push(`/prologo/6/sigilo/1/${ruta}`); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
 
@@ -73,7 +73,7 @@ const Page = () => {
           >
             <div className="pt-6">
               <Button
-                onClick={handlePage}
+                onClick={()=>handlePage('distraccion')}
                 className="w-full bg-red-950 text-white"
               >
                Crear una Distracción
@@ -81,7 +81,7 @@ const Page = () => {
             </div>
             <div className="pt-6">
               <Button
-                onClick={handlePage}
+                     onClick={()=>handlePage('distraccion')}
                 className="w-full bg-red-950 text-white"
               >
                 Desarmar a los Bandidos
@@ -89,18 +89,10 @@ const Page = () => {
             </div>
             <div className="pt-6">
               <Button
-                onClick={handlePage}
+                 onClick={()=>handlePage('distraccion')}
                 className="w-full bg-red-950 text-white"
               >
                 Ataque Sorpresa
-              </Button>
-            </div>
-            <div className="pt-6">
-              <Button
-                onClick={handlePage}
-                className="w-full bg-red-950 text-white"
-              >
-                Esperar y Observar
               </Button>
             </div>
           </motion.div>
