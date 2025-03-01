@@ -7,7 +7,7 @@ import useStore from '@/src/store/useStore';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Dice from 'react-dice-roll';
-import {User } from 'lucide-react';
+import { HeartPulse, User } from 'lucide-react';
 
 type BandidoType = {
   name: string;
@@ -40,9 +40,18 @@ const Page = () => {
   ]);
   const [historial, setHistorial] = useState<HistorialType[]>([]);
   const router = useRouter();
-  const { wolfName, setCurrentPage, removeVida, vida, armaEquipada } =
-    useStore();
-
+  const {
+    wolfName,
+    setCurrentPage,
+    removeVida,
+    vida,
+    armaEquipada,
+    atributo,
+    nombre,
+    vidaMaxima,
+    setCharacter,
+  } = useStore();
+  const fuerza = calcularValor(atributo.fuerza);
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
     visible: (i: number) => ({
@@ -70,7 +79,9 @@ const Page = () => {
 
   const updateBandidoVida = (damage: number) => {
     const totalDamage =
-      armaEquipada !== null ? damage + (armaEquipada.value ?? 0) : damage;
+      armaEquipada !== null
+        ? damage + (armaEquipada.value ?? 0) + fuerza
+        : damage + fuerza;
     if (currentBandidoIndex < bandidos.length) {
       const updatedBandidos = [...bandidos];
       const currentBandido = updatedBandidos[currentBandidoIndex];
@@ -103,7 +114,9 @@ const Page = () => {
   };
 
   const handleGameOver = () => {
+    setCharacter(null);
     alert('Fin de la partida');
+    router.push('/');
     // Aquí puedes redirigir a una página de fin de juego o realizar otras acciones
   };
 
@@ -140,6 +153,7 @@ const Page = () => {
               </Typography>
             </div>
           </motion.div>
+
           <motion.div
             key={2}
             initial="hidden"
@@ -155,6 +169,35 @@ const Page = () => {
                 Nota: si tienes alguna arma puedes equiparla en el inventario.
                 <br />
               </Typography>
+            </div>
+          </motion.div>
+
+          <motion.div
+            key={3}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={variantsTwo}
+            custom={3}
+            transition={{ duration: 2 }}
+            className="w-full h-2/4 flex flex-col justify-end items-center"
+          >
+            <div className="flex justify-between py-6">
+              <div className="">
+                <Typography className="font-semibold text-red-950">
+                  Nombre
+                </Typography>
+                <div className="flex items-center gap-1">
+                  <User className="text-red-950" />
+                  <Typography>{nombre}</Typography>
+                </div>
+              </div>
+              <div className="flex flex-col items-center">
+                <HeartPulse className="text-red-950" />
+                <Typography className="mt-0">
+                  {vida}/{vidaMaxima}
+                </Typography>
+              </div>
             </div>
           </motion.div>
           <motion.div
@@ -197,12 +240,12 @@ const Page = () => {
             </div>
           </motion.div>
           <motion.div
-            key={3}
+            key={4}
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={variantsTwo}
-            custom={3}
+            custom={4}
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
@@ -213,12 +256,14 @@ const Page = () => {
             />
 
             {bandidos.every(bandido => bandido.vida <= 0) && (
-              <Button
-                onClick={() => handlePage('victoria')}
-                className="w-full bg-red-950 text-white"
-              >
-                Continuar
-              </Button>
+              <div className="w-full pt-6 pb-12 mb-12">
+                <Button
+           /*        onClick={() => handlePage('victoria')} */
+                  className="w-full bg-red-950 text-white"
+                >
+                  Continuar
+                </Button>
+              </div>
             )}
           </motion.div>
         </div>
@@ -228,3 +273,9 @@ const Page = () => {
 };
 
 export default Page;
+
+// helper
+
+const calcularValor = (fuerza: number): number => {
+  return Math.floor(fuerza / 2);
+};

@@ -97,7 +97,7 @@ const Page = () => {
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
-            <div className="pt-6">
+            <div className="pt-6 pb-12 mb-12">
               <Button
                 onClick={handlePage}
                 className="w-full bg-red-950 text-white"

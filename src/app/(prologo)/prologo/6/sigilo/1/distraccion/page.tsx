@@ -106,7 +106,7 @@ const Page = () => {
               disabled={diceValue !== null}
             />
             {diceValue !== null && diceValue < 2 && (
-              <>
+              <div className="pt-6 pb-12 mb-12">
                 <Typography variant="p" className="py-4">
                   Lanzas la roca al arbusto, pero haces mucho ruido y los
                   hombres se dan cuenta de tu presencia y te atacan.
@@ -117,10 +117,10 @@ const Page = () => {
                 >
                   Continuar
                 </Button>
-              </>
+              </div>
             )}
             {diceValue !== null && diceValue >= 2 && (
-              <>
+              <div className="pt-6 pb-12 mb-12">
                 <Typography variant="p" className="py-4">
                   Observas los objetos alrededor de la fogata: una cuerda, un
                   saco de provisiones y una manta. Elabores rápidamente un plan.
@@ -138,7 +138,7 @@ const Page = () => {
                 >
                   Continuar
                 </Button>
-              </>
+              </div>
             )}
           </motion.div>
         </div>

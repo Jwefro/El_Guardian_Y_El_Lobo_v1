@@ -112,7 +112,7 @@ const Page = () => {
               disabled={diceValue !== null}
             />
             {diceValue !== null && diceValue <= 3 && (
-              <>
+              <div className="pt-6 pb-12 mb-12">
                 <Typography variant="p" className="py-4">
                   Tus manos resbalan y pierdes el equilibrio. Caes de espaldas,
                   rodando hacia abajo y golpeándote con las rocas en el proceso.
@@ -127,10 +127,10 @@ const Page = () => {
                 >
                   Continuar
                 </Button>
-              </>
+              </div>
             )}
             {diceValue !== null && diceValue > 3 && (
-              <>
+              <div className="pt-6 pb-12 mb-12">
                 <Typography variant="p" className="py-4">
                   ¡Has superado el desafío! Continúas ascendiendo por las rocas
                   con determinación y valentía.
@@ -141,7 +141,7 @@ const Page = () => {
                 >
                   Continuar
                 </Button>
-              </>
+              </div>
             )}
           </motion.div>
         </div>
