@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const router = useRouter();
-  const { wolfName, setCurrentPage } = useStore();
+  const { wolfName, setCurrentPage,sexo } = useStore();
 
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
@@ -56,7 +56,7 @@ const Page = () => {
                 la búsqueda de Lia. Las montañas, aunque bellas, eran
                 traicioneras, con senderos estrechos y rocas resbaladizas. A
                 medida que ascendías, el aire se volvía más frío y el terreno
-                más difícil de navegar. Sin embargo, estabas determinado a
+                más difícil de navegar. Sin embargo, estabas {sexo === 'hombre' ?'determinado' : 'determinada'} a
                 encontrar a la niña y no permitirías que ningún obstáculo te
                 detuviera.
               </Typography>

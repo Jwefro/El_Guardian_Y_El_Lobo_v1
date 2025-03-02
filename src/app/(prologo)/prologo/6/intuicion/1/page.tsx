@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const router = useRouter();
-  const { setCurrentPage } = useStore();
+  const { setCurrentPage, wolfName } = useStore();
 
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
@@ -23,11 +23,11 @@ const Page = () => {
     }),
   };
 
-  const handlePage = () => {
+  const handlePage = (ruta: string) => {
     setStartAnimation(true);
-    setCurrentPage('/prologo/6/intuicion/1');
+    setCurrentPage(`/prologo/6/intuicion/1/${ruta}`);
     setTimeout(() => {
-      router.push('/prologo/6/intuicion/1'); // Redirige a la página del juego después de la animación
+      router.push(`/prologo/6/intuicion/1/${ruta}`); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
 
@@ -51,14 +51,21 @@ const Page = () => {
           >
             <div className="">
               <Typography variant="p" className="pb-4">
-                Decides confiar en tu intuición, guiándote hacia la fogata con
-                pasos cuidadosos, mientras te mantienes alerta a cualquier señal
-                inusual a lo largo del camino. Tus corazonadas siempre te han
-                llevado por el sendero correcto, y esta vez no es diferente.
+                Tu corazón se acelera, pero mantienes la calma. Ahora debes
+                idear un plan para enfrentarte a los bandidos y rescatar a Lia,
+                confiando en las habilidades y recursos a tu disposición.
+                piensas en que puedes crear una distracción utilizando los
+                objetos cercanos, o coordinar un ataque sorpresa con la ayuda de{' '}
+                <span className="text-red-950 px-1">{wolfName}</span>.
+                <br />
+                <br />
+                Desde tu posición estratégica, te tomas un momento para evaluar
+                la situación. Tu respiración se calma mientras la adrenalina
+                comienza a recorrer tu cuerpo. Sabes que cualquier error podría
+                poner en peligro a Lia, así que decides actuar con precisión.
               </Typography>
             </div>
           </motion.div>
-
           <motion.div
             key={1}
             initial="hidden"
@@ -71,58 +78,61 @@ const Page = () => {
           >
             <div className="">
               <Typography variant="p" className="pb-4">
-                Mientras avanzas, una sensación persistente te empuja a seguir
-                adelante. Algo sobre esta fogata te resulta más importante de lo
-                que parece. El paisaje alrededor comienza a cambiar lentamente:
-                las raíces de los árboles sobresalen del suelo como garras, y el
-                terreno se vuelve más empinado. Durante tu avance, notas señales
-                extrañas que confirman tus sospechas. Encuentras una rama rota
-                en el suelo, que parece haber sido pisada recientemente. También
-                te das cuenta de unas huellas apenas visibles en el barro,
-                posiblemente de botas pesadas.
+                Te concentras en estudiar a los bandidos. Uno afila
+                distraídamente una daga cerca de la fogata, el segundo revuelve
+                los restos de un saco de provisiones, y el tercero, más robusto,
+                descansando en un tronco con una pesada maza a su lado. Cada uno
+                tiene un patrón de movimiento que podrías aprovechar. Mides las
+                distancias entre ellos, la fogata y Lia, buscando puntos débiles
+                en su formación.
               </Typography>
             </div>
           </motion.div>
           <motion.div
-            key={3}
+            key={2}
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={variantsTwo}
-            custom={3}
+            custom={2}
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
             <div className="">
               <Typography variant="p" className="pb-4">
-                Siguiendo estas señales, te detienes en un punto estratégico
-                desde el cual puedes observar con claridad lo que ocurre en el
-                claro más adelante. A través del dosel de los árboles, ves una
-                fogata rodeada por tres bandidos, que conversan en voz baja, con
-                armas descansando cerca de ellos. Uno de ellos parece estar
-                afilando una daga. Tu atención, sin embargo, se centra en una
-                pequeña figura atada a un árbol: Lia. Su cabello iluminado por
-                la luz de la fogata brilla débilmente, y aunque está inmóvil,
-                parece estar consciente, aunque visiblemente agotada.
+                A tu alrededor, el paisaje se convierte en tu aliado. Notas un
+                par de piedras sueltas cerca de tus pies y ramas secas a unos
+                metros de distancia. Si decides crear una distracción, estos
+                objetos podrían ayudarte a redirigir la atención de los
+                bandidos. También identificas un árbol con suficiente cobertura
+                como para esconderte y realizar el primer movimiento.
               </Typography>
             </div>
           </motion.div>
           <motion.div
-            key={4}
+            key={1}
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={variantsTwo}
-            custom={4}
+            custom={1}
             transition={{ duration: 2 }}
-            className="w-full h-2/4 flex flex-col justify-end items-center"
+            className="w-full h-2/4 flex flex-col justify-end items-center mb-20 pb-20"
           >
-            <div className="pt-6 pb-20 mb-12">
+            <div className="pt-6">
               <Button
-                onClick={handlePage}
+                onClick={() => handlePage('distraccion')}
                 className="w-full bg-red-950 text-white"
               >
-                Continuar
+                Crear una Distracción
+              </Button>
+            </div>
+            <div className="pt-6">
+              <Button
+                onClick={() => handlePage('ataque-sorpresa')}
+                className="w-full bg-red-950 text-white"
+              >
+                Ataque Sorpresa
               </Button>
             </div>
           </motion.div>

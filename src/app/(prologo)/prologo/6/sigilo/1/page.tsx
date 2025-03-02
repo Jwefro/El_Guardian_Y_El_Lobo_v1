@@ -23,7 +23,7 @@ const Page = () => {
     }),
   };
 
-  const handlePage = (ruta:string) => {
+  const handlePage = (ruta: string) => {
     setStartAnimation(true);
     setCurrentPage(`/prologo/6/sigilo/1/${ruta}`);
     setTimeout(() => {
@@ -73,15 +73,15 @@ const Page = () => {
           >
             <div className="pt-6">
               <Button
-                onClick={()=>handlePage('distraccion')}
+                onClick={() => handlePage('distraccion')}
                 className="w-full bg-red-950 text-white"
               >
-               Crear una Distracción
+                Crear una Distracción
               </Button>
             </div>
             <div className="pt-6">
               <Button
-                     onClick={()=>handlePage('distraccion')}
+                onClick={() => handlePage('desarmar')}
                 className="w-full bg-red-950 text-white"
               >
                 Desarmar a los Bandidos
@@ -89,7 +89,7 @@ const Page = () => {
             </div>
             <div className="pt-6">
               <Button
-                 onClick={()=>handlePage('distraccion')}
+                onClick={() => handlePage('ataque-sorpresa')}
                 className="w-full bg-red-950 text-white"
               >
                 Ataque Sorpresa

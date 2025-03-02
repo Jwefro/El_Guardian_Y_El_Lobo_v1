@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const router = useRouter();
-  const { wolfName, setCurrentPage } = useStore();
+  const { wolfName, setCurrentPage, sexo } = useStore();
 
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
@@ -52,7 +52,7 @@ const Page = () => {
             {' '}
             <div className="">
               <Typography variant="p" className="pb-4">
-                Adolorido y un poco aturdido, te levantas lentamente, tratando
+               {sexo === "hombre" ?'Adolorido y un poco aturdido' : 'Adolorida y un poco aturdida'}, te levantas lentamente, tratando
                 de sacudirte el polvo y el dolor. Observas los alrededores en
                 busca de tu compañero, pero no lo ves cerca. La preocupación
                 comienza a invadirte hasta que, finalmente, te percatas de que

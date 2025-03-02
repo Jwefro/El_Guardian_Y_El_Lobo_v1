@@ -29,14 +29,9 @@ const Page = () => {
   const [currentBandidoIndex, setCurrentBandidoIndex] = useState(0);
   const [bandidos, setBandidos] = useState<BandidoType[]>([
     {
-      name: 'Secuestrador 1',
-      vida: 20,
-      ataque: 4,
-    },
-    {
-      name: 'Secuestrador 2',
-      vida: 20,
-      ataque: 4,
+      name: 'Gran Bandido',
+      vida: 25,
+      ataque: 6,
     },
   ]);
   const [historial, setHistorial] = useState<HistorialType[]>([]);
@@ -69,13 +64,13 @@ const Page = () => {
 
   const handlePage = (ruta: string) => {
     console.log(ruta);
-    
     setStartAnimation(true);
     setCurrentPage(`/prologo/6`);
     setTimeout(() => {
       router.push(`/prologo/6`);
     }, 500);
   };
+
   const handleDados = (res: number) => {
     setDiceValue(res);
     updateBandidoVida(res);
@@ -161,10 +156,40 @@ const Page = () => {
           >
             <div className="">
               <Typography variant="p" className="pb-4">
-                Tienes que luchar contra los Secuestradores para rescatar a Lia.
+                Rapidamente le dices a{' '}
+                <span className="text-red-950 px-1">{wolfName}</span> que se
+                acerque a Lia y intente romper sus ataduras. mientras tu te
+                preparas para enfrentar a al Bandido restante.
                 <br />
-                <span className="text-red-950 px-1">{wolfName}</span> te ayuda a
-                luchar contra uno de ellos.
+                <br />
+                <span className="text-red-950 px-1">{wolfName}</span> con sus
+                colmillos logra desatar a Lia. Asi que le gritas con todas tus
+                fuerzas que corra hacia la aldea y huyan lo mas lejos posible.
+                <br />
+                <br />
+                Lia se monta en{' '}
+                <span className="text-red-950 px-1">{wolfName}</span> y se
+                alejan a toda velocidad mientras tu miras fijamente a tu
+                oponente.
+              </Typography>
+            </div>
+          </motion.div>
+
+          <motion.div
+            key={1}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={variantsTwo}
+            custom={1}
+            transition={{ duration: 2 }}
+            className="w-full h-2/4 flex flex-col justify-end items-center"
+          >
+            <div className="">
+              <Typography variant="p" className="pt-4">
+                Debes luchas contra el bandido para darle tiempo a Lia y{' '}
+                <span className="text-red-950 px-1">{wolfName}</span> de
+                escapar.
               </Typography>
             </div>
           </motion.div>
@@ -180,7 +205,7 @@ const Page = () => {
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
             <div className="">
-              <Typography variant="small" className="text-xs py-4">
+              <Typography variant="small" className="text-xs py-8">
                 Nota: si tienes alguna arma puedes equiparla en el inventario.
                 <br />
               </Typography>
@@ -257,7 +282,7 @@ const Page = () => {
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
             <div className="w-full pt-4">
-              <div className="flex justify-between w-full flex-wrap">
+              <div className="flex justify-between w-full gap-4 flex-wrap">
                 {bandidos.map((bandido, index) => (
                   <div key={index} className="flex items-center w-30">
                     <User size={30} />
@@ -297,7 +322,7 @@ const Page = () => {
             variants={variantsTwo}
             custom={6}
             transition={{ duration: 2 }}
-            className="w-full h-2/4 flex flex-col justify-end items-center mt-8"
+            className="w-full h-2/4 flex flex-col justify-end items-center mt-8 mb-16 pb-20"
           >
             <Dice
               faceBg="#7f1d1d"

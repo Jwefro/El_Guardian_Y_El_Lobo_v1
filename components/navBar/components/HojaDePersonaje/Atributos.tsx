@@ -44,7 +44,7 @@ const HojaDeAtributos: React.FC = () => {
                     <TableRow className="border-b border-red-950">
                         <TableCell className="border-b border-red-950">Fuerza:</TableCell>
                         <TableCell className="border-b border-red-950 text-center">{atributo.fuerza}</TableCell>
-                        <TableCell className="border-b border-red-950 text-center">+{calcularFuerza(atributo.fuerza + (armaEquipada?.value ?? 0))}pts</TableCell>
+                        <TableCell className="border-b border-red-950 text-center">+{calcularFuerza(atributo.fuerza)}atk</TableCell>
                     </TableRow>
                 </TableBody>
                 <TableFooter>

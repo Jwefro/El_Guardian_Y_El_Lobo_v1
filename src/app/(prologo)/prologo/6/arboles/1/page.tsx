@@ -23,11 +23,11 @@ const Page = () => {
     }),
   };
 
-  const handlePage = () => {
+  const handlePage = (ruta: string) => {
     setStartAnimation(true);
-    setCurrentPage('/prologo/5');
+    setCurrentPage(`/prologo/6/sigilo/1/${ruta}`);
     setTimeout(() => {
-      router.push('/prologo/5'); // Redirige a la página del juego después de la animación
+      router.push(`/prologo/6/sigilo/1/${ruta}`); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
 
@@ -51,14 +51,12 @@ const Page = () => {
           >
             <div className="">
               <Typography variant="p" className="pb-4">
-                decides confiar en el instinto de{' '}
-                <span className="text-red-950 px-1">{wolfName}</span>. Te
-                diriges hacia el camino embarrado, siguiendo a tu compañero
-                fiel. A medida que avanzan, el paisaje cambia lentamente. El
-                denso bosque se vuelve más oscuro y las sombras de los árboles
-                se alargan, creando una atmósfera de misterio y tensión. De
-                repente, algo en el aire te hace detenerte. encuentras el cesto
-                de flores de Lia. Y confirmas que estás en el camino correcto.
+                Te Debes idear un plan para enfrentarlos y rescatar a Lia.
+                Podrías crear una distracción utilizando los objetos cercanos, o
+                coordinar un ataque sorpresa con la ayuda de{' '}
+                <span className="text-red-950 px-1">{wolfName}</span>. Tu mente
+                trabaja rápidamente, evaluando las opciones y preparando el
+                terreno para la acción.
               </Typography>
             </div>
           </motion.div>
@@ -74,10 +72,18 @@ const Page = () => {
           >
             <div className="pt-6">
               <Button
-                onClick={handlePage}
+                onClick={() => handlePage('distraccion')}
                 className="w-full bg-red-950 text-white"
               >
-                Continuar
+                Crear una Distracción
+              </Button>
+            </div>
+            <div className="pt-6">
+              <Button
+                onClick={() => handlePage('ataque-sorpresa')}
+                className="w-full bg-red-950 text-white"
+              >
+                Ataque Sorpresa
               </Button>
             </div>
           </motion.div>

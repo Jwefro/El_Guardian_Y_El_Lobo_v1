@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const router = useRouter();
-  const { setCurrentPage } = useStore();
+  const { setCurrentPage, sexo } = useStore();
 
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
@@ -59,7 +59,7 @@ const Page = () => {
                 Ella era la hija de tu mejor amigo de la infancia Aldric , quien
                 había fallecido en un accidente trágico años atrás en el reino
                 de Valoria. Desde entonces, te habías convertido en una especie
-                de mentor y protector para Lia. Su madre, llamada Maris ,
+                de {sexo === 'hombre' ?"mentor y protector" : 'mentora y protectora'} para Lia. Su madre, llamada Maris ,
                 sobrecargada por la pérdida, apreciaba profundamente el vínculo
                 que habías formado con su hija. Ahora, Lia estaba en peligro y
                 necesitaba tu ayuda.

@@ -69,13 +69,13 @@ const Page = () => {
 
   const handlePage = (ruta: string) => {
     console.log(ruta);
-    
     setStartAnimation(true);
     setCurrentPage(`/prologo/6`);
     setTimeout(() => {
       router.push(`/prologo/6`);
     }, 500);
   };
+
   const handleDados = (res: number) => {
     setDiceValue(res);
     updateBandidoVida(res);
