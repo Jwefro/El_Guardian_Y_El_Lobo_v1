@@ -7,13 +7,13 @@ import useStore from '@/src/store/useStore';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Dice from 'react-dice-roll';
-
 const Page = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const [diceValue, setDiceValue] = useState<number | null>(null);
   const router = useRouter();
-  const { wolfName, setCurrentPage, removeVida } = useStore();
+  const { wolfName, setCurrentPage, removeVida, skill } = useStore();
 
+  const valorRequeridoAccion = skill.includes('Sigilo') ? 2 : 3;
   const variantsTwo = {
     hidden: { opacity: 0, x: 0 },
     visible: (i: number) => ({
@@ -28,9 +28,9 @@ const Page = () => {
 
   const handlePage = (ruta: string) => {
     setStartAnimation(true);
-    setCurrentPage(`/prologo/5/camino-de-rocas/${ruta}`);
+    setCurrentPage(`/prologo/6/sigilo/1/distraccion/${ruta}`);
     setTimeout(() => {
-      router.push(`/prologo/5/camino-de-rocas/${ruta}`); // Redirige a la página del juego después de la animación
+      router.push(`/prologo/6/sigilo/1/distraccion/${ruta}`); // Redirige a la página del juego después de la animación
     }, 500); // Duración de la animación en milisegundos
   };
 
@@ -64,36 +64,30 @@ const Page = () => {
           >
             <div className="">
               <Typography variant="p" className="pb-4">
-                Decides enfrentar el desafío del primer camino y te preparas
-                para trepar por las rocas.{' '}
-                <span className="text-red-950 px-1">{wolfName}</span> te sigue
-                de cerca hasta que las rocas se vuelven demasiado altas y
-                empinadas. Se queda abajo, observándote atentamente.
+                Decides utilizar los objetos cercanos para crear una distracción
+                y alejar a los bandidos de Lia.
+                <br />
               </Typography>
             </div>
           </motion.div>
           <motion.div
-            key={1}
+            key={0}
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={variantsTwo}
-            custom={1}
+            custom={0}
             transition={{ duration: 2 }}
             className="w-full h-2/4 flex flex-col justify-end items-center"
           >
             <div className="">
               <Typography variant="p" className="pb-4">
-                A medida que asciendes, las rocas se vuelven cada vez más
-                resbaladizas. Tomas un respiro y miras a tu alrededor desde una
-                altura considerable. La vista es impresionante, pero no hay
-                señales de Lia. La preocupación comienza a instalarse en tu
-                mente y empiezas a perder el equilibrio. Derrepente se te
-                resbala una mano y estas a punto de caer
+                Lanza el dado para saber si es suficiente para distraer a los
+                bandidos.
                 <br />
-                <br />
-                 Lanza los dados
-                para ver si puedes continuar.
+                {skill.includes('Sigilo')
+                  ? 'Como tienes la habilidad de Sigilo solo necesitaras 2 o más para tener éxito.'
+                  : 'Como no tienes la habilidad de Sigilo necesitaras 3 o más para tener éxito.'}
               </Typography>
             </div>
           </motion.div>
@@ -113,15 +107,11 @@ const Page = () => {
               onRoll={value => handleDados(value)}
               disabled={diceValue !== null}
             />
-            {diceValue !== null && diceValue <= 3 && (
+            {diceValue !== null && diceValue < valorRequeridoAccion && (
               <div className="pt-6 pb-12 mb-12">
                 <Typography variant="p" className="py-4">
-                  Tus manos resbalan y pierdes el equilibrio. Caes de espaldas,
-                  rodando hacia abajo y golpeándote con las rocas en el proceso.
-                  Sientes un dolor agudo y pierdes -
-                  <span className="text-red-950">{diceValue}</span> puntos de
-                  vida debido a las lesiones. Ten cuidado, cada paso es crucial
-                  en esta peligrosa travesía.
+                  Lanzas la roca al arbusto, pero haces mucho ruido y los
+                  hombres se dan cuenta de tu presencia y te atacan.
                 </Typography>
                 <Button
                   onClick={() => handlePage('1')}
@@ -131,14 +121,21 @@ const Page = () => {
                 </Button>
               </div>
             )}
-            {diceValue !== null && diceValue > 3 && (
+            {diceValue !== null && diceValue >= valorRequeridoAccion && (
               <div className="pt-6 pb-12 mb-12">
                 <Typography variant="p" className="py-4">
-                  ¡Has superado el desafío! Continúas ascendiendo por las rocas
-                  con determinación y valentía.
+                  Observas los objetos alrededor de la fogata: una cuerda, un
+                  saco de provisiones y una manta. Elabores rápidamente un plan.
+                  Lanzas la cuerda a un arbusto cercano, creando un ruido que
+                  atrae la atención de los bandidos. Mientras ellos se acercan
+                  para investigar el ruido, utilizas la manta para cubrir la
+                  fogata y apagarla momentáneamente, sumiendo el área en
+                  oscuridad. Aprovechas la confusión y, con la ayuda de{' '}
+                  <span className="text-red-950 px-1">{wolfName}</span>, te
+                  deslizas hacia Lia y comienzas a desatarla.
                 </Typography>
                 <Button
-                  onClick={() => handlePage('2')}
+                  onClick={() => handlePage('1')}
                   className="w-full bg-red-950 text-white"
                 >
                   Continuar

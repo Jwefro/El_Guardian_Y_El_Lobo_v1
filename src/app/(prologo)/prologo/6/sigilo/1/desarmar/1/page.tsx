@@ -161,7 +161,7 @@ const Page = () => {
           >
             <div className="">
               <Typography variant="p" className="pb-4">
-                Tienes que luchar contra los Secuestradores para rescatar a Lia.
+                Tienes que luchar contra los Bandidos para rescatar a Lia.
                 <br />
                 <span className="text-red-950 px-1">{wolfName}</span> te ayuda a
                 luchar contra uno de ellos.
